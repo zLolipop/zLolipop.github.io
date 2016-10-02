@@ -1,0 +1,31 @@
+title: "钟小耿的笔记"
+author: "钟泽耿"
+description: "Really cool blog about ... something"
+#subheading: "Really cool blog about ... something"
+more: "read more"
+url: "https://github.com/zLolipop"
+baseurl: "/contrast" # comment out if in root directory
+
+comments:
+    disqus: "niklasbuschmann"
+#    isso: "comments.mysite.org"
+
+style:
+#    body: "whitesmoke"
+    padding: 33%
+    anchor: "#46f"
+    serif-heading: true
+    nav: "#181818"
+#    headline: "#06f"
+    description: "white"
+    article:
+        odd: "#ffffff"
+        even: "#222222"
+
+links:
+  - github: "https://github.com/zLolipop"
+  
+paginate: 10
+excerpt_separator: "\n\n\n" # excerpt ends after two blank lines
+defaults: [{scope: {path: ""}, values: {layout: "default"}}, {scope: {path: "", type: "posts"}, values: {comments: true}}]
+gems: [jekyll-feed] # include feed plugin (supported by gh-pages)
