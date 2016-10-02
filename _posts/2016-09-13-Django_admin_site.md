@@ -1,5 +1,5 @@
 ---
-title: Django Admin 站点
+title: "Django Admin 站点"
 date: 2016-09-13 14:31:20
 categories: Django
 ---
@@ -27,6 +27,7 @@ admin.site.register(Author, AuthorAdmin)
 ```
 在上面的例子中AuthorAdmin并没有定义任何自定义的值,这时Django将使用默认的Admin界面,如果对默认的Admin界面足够满意,
 那么完全没有必要自己定义*ModelAdmin*对象,可以直接注册模型类而无需提供*ModelAdmin*的描述.这样的话上述例子可以简化成:
+
 ```python
 from django.contrib import admin
 from myproject.myapp.models import Author
