@@ -4,6 +4,12 @@ date: 2016-09-13 14:31:20
 categories: Django
 ---
 
+有关Django admin 站点的一点笔记
+
+
+-----------
+
+
 ## ModelAdmin 对象
 
 ModelAdmin 类是模型在Admin 界面中的表示形式。通常，将它们在你的应用中的名为admin.py的文件里。让我们来看一个关于ModelAdmin类非常简单的例子:
