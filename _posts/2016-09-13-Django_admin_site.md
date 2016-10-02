@@ -30,4 +30,4 @@ from myproject.myapp.models import Author
 
 admin.site.register(Author)
 
-{% endhightlight %}
+{% endhighlight %}
