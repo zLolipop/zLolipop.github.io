@@ -3,6 +3,7 @@ title: Django Admin 站点
 date: 2016-09-13 14:31:20
 categories: Django
 ---
+
 - 创建超级用户
 
   `python manage.py createsuperuser`
