@@ -111,3 +111,37 @@ somenamedtuple._fields  # 字段名称的元组
 -------------------
 
 # deque  双端队列
+
+双端队列，最大的好处就是在获取两端的元素的效率极高，你可能会说，原生的list也可以从头部添加和取出对象啊？就像这样：
+
+```Python
+l.insert(0,v)
+l.pop()
+```
+
+这里list对象l两种方法的复杂度是O(n),而deque则是O(1),所以当代码中有这样的需求时,一定要记得使用deque。
+
+而且deque提供了一些比较好用的方法，例如rotate(n), 我们可以做一个跑马灯
+
+```Python
+
+# coding: utf-8
+
+import sys
+import time
+from collections import deque
+
+fancy_loading = deque('>--------------------')
+
+while True:
+    print('\r%s' % ''.join(fancy_loading),end='')
+    fancy_loading.rotate(1)
+    sys.stdout.flush()
+    time.sleep(0.08)
+
+# Result:
+
+# 一个无尽循环的跑马灯
+------------->-------
+
+```
