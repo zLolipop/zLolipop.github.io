@@ -26,6 +26,7 @@ categories: Python
 
 # namedtuple
 原型:
+
 ```Python
 collections.namedtuple(typename, field_names, verbose=False, rename=False)
 ```
@@ -63,6 +64,7 @@ Point(x=11, y=22)
 **namedtuple 在为 csv or sqlite3 模块返回的元组命名显得十分有用:**
 
 ```Python
+
 EmployeeRecord = namedtuple('EmployeeRecord', 'name, age, title, department, paygrade')
 
 import csv
@@ -75,6 +77,7 @@ cursor = conn.cursor()
 cursor.execute('SELECT name, age, title, department, paygrade FROM employees')
 for emp in map(EmployeeRecord._make, cursor.fetchall()):
     print(emp.name, emp.title)
+
 ```
 
 怎么样很棒吧？ 
@@ -83,6 +86,7 @@ for emp in map(EmployeeRecord._make, cursor.fetchall()):
 为了避免和字段冲突，这些方法和属性都以下划线开头。分别是
 
 ```Python
+
 # 类方法。从现有的列表或迭代器创建一个新的实例
 classmethod somenamedtuple._make(iterable)
 
@@ -106,6 +110,7 @@ Point(x=33, y=22)
 
 somenamedtuple._source
 somenamedtuple._fields  # 字段名称的元组
+
 ```
 
 -------------------
@@ -115,13 +120,17 @@ somenamedtuple._fields  # 字段名称的元组
 双端队列，最大的好处就是在获取两端的元素的效率极高，你可能会说，原生的list也可以从头部添加和取出对象啊？就像这样：
 
 ```Python
+
 l.insert(0,v)
 l.pop()
+
 ```
+
 
 这里list对象l两种方法的复杂度是O(n),而deque则是O(1),所以当代码中有这样的需求时,一定要记得使用deque。
 
 而且deque提供了一些比较好用的方法，例如rotate(n), 我们可以做一个跑马灯
+
 
 ```Python
 
