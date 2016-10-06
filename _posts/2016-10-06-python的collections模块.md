@@ -45,7 +45,7 @@ collections.namedtuple(typename, field_names, verbose=False, rename=False)
 
 **下面是namedtuple的用法**
 
-```python
+{% highlight python %}
 
 >>> # Basic example
 >>> Point = namedtuple('Point', ['x', 'y'])
@@ -59,11 +59,14 @@ collections.namedtuple(typename, field_names, verbose=False, rename=False)
 33
 >>> p                       # readable __repr__ with a name=value style
 Point(x=11, y=22)
-```
+
+{% endhighlight %}
+
 
 **namedtuple 在为 csv or sqlite3 模块返回的元组命名显得十分有用:**
 
-```Python
+
+{% highlight python %}
 
 EmployeeRecord = namedtuple('EmployeeRecord', 'name, age, title, department, paygrade')
 
@@ -78,14 +81,15 @@ cursor.execute('SELECT name, age, title, department, paygrade FROM employees')
 for emp in map(EmployeeRecord._make, cursor.fetchall()):
     print(emp.name, emp.title)
 
-```
+{% endhighlight %}
+
 
 怎么样很棒吧？ 
 
 另外除了从tuple继承而来的方法，namedtuple还支持另外三个方法和两个属性。
 为了避免和字段冲突，这些方法和属性都以下划线开头。分别是
 
-```Python
+{% highlight python %}
 
 # 类方法。从现有的列表或迭代器创建一个新的实例
 classmethod somenamedtuple._make(iterable)
@@ -111,7 +115,8 @@ Point(x=33, y=22)
 somenamedtuple._source
 somenamedtuple._fields  # 字段名称的元组
 
-```
+{% endhighlight %}
+
 
 -------------------
 
@@ -119,12 +124,12 @@ somenamedtuple._fields  # 字段名称的元组
 
 双端队列，最大的好处就是在获取两端的元素的效率极高，你可能会说，原生的list也可以从头部添加和取出对象啊？就像这样：
 
-```Python
+{% highlight python %}
 
 l.insert(0,v)
 l.pop()
 
-```
+{% endhighlight %}
 
 
 这里list对象l两种方法的复杂度是O(n),而deque则是O(1),所以当代码中有这样的需求时,一定要记得使用deque。
@@ -132,7 +137,7 @@ l.pop()
 而且deque提供了一些比较好用的方法，例如rotate(n), 我们可以做一个跑马灯
 
 
-```Python
+{% highlight python %}
 
 # coding: utf-8
 
@@ -153,4 +158,5 @@ while True:
 # 一个无尽循环的跑马灯
 ------------->-------
 
-```
+{% endhighlight %}
+
