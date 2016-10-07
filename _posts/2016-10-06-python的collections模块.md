@@ -15,12 +15,14 @@ categories: Python
 
 |||
 |-----|------|
-|namedtuple|这是个工厂方法,生成可以使用名字来访问元素内容的tuple子类|
-|deque|双端队列|
-|ChainMap|为多个映射创建单个视图的类字典类型,可以说是合并多个字典,但和update不同|
-|Counter| |
-
-
+|[namedtuple()](#namedtuple)    |这是个工厂方法,生成可以使用名字来访问元素内容的tuple子类|
+|[deque](#deque)                        |双端队列|
+|[ChainMap](#ChainMap)           |为多个映射创建单个视图的类字典类型,可以说是合并多个字典,但和update不同|
+|[Counter](#Counter)                  |计数器，用于计算可哈希对象的个数，是dict的子类|
+|[OrderedDict](#OrderedDict)     |有序字典，能记录着数据成员添加的顺序|
+|[defaultdict](#defaultdict)           ||
+|
+ 
 
 -------------
 
@@ -160,3 +162,41 @@ while True:
 
 {% endhighlight %}
 
+
+## deque 的食用技巧
+
+deque 这么好的数据结构，既是线程安全的，又有很高的效率，食用起来肯定很爽。
+下面介绍几种食用技巧：
+
+- 利用有界双向队列来实现Unix中的tail功能。
+
+    {% highlight python %}
+
+    def tail(filename, n=10):
+        """Return the last n lines of a file"""
+        with open(filename) as f:
+            return deque(f, n)
+
+    {% endhighlight %}
+
+
+- 计算[移动平均数](https://zh.wikipedia.org/wiki/%E7%A7%BB%E5%8B%95%E5%B9%B3%E5%9D%87)，这个在金融量化上好像能用。其实想法是保留最近的添加的n个数据
+
+    {% highlight python %}
+
+    def moving_average(iterable, n=3):
+        # moving_average([40, 30, 50, 46, 39, 44]) --> 40.0 42.0 45.0 43.0
+        it = iter(iterable)
+        d = deque(itertools.islice(it, n-1))
+        d.appendleft(0)
+        s = sum(d)
+        for elem in it:
+            s += elem - d.popleft()
+            d.append(elem)
+            yield s / n
+
+    {% endhighlight %}
+
+正确的食用技巧可以从中享受Python带来的简洁。 爽！
+
+-----------------
